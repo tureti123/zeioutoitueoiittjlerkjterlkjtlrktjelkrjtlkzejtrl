@@ -1,5 +1,4 @@
-pour participer a ce projet 
-vous devez installer plusieurs modules socket.io,node js et mongoosedb(demandez a chatgpt pour vous aider)
+pour participer a ce projet/nvous devez installer plusieurs modules socket.io,node js et mongoosedb(demandez a chatgpt pour vous aider)
 vous devez creer un dossier et mettre tout ces fichiers 
 les fichiers suivants sont a ne pas enlever sinon ca ne marche pas :among legend script.mjs,among legend.html,demarer.bat,cassec.mjs, cassecmong.js,package-lock.json et package.json
 installez mongodbcompass pour voir la base de donnée  
