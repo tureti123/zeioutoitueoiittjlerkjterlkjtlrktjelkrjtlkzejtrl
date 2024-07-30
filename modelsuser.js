@@ -1,3 +1,7 @@
-let mh='chat'
-console.log(mh[2])
-console.log(mh.length)
+async function hu(){
+    
+    let T = await collection.find({'team':`T${b}`}).toArray();
+   
+
+
+}
