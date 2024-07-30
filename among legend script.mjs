@@ -6,6 +6,7 @@ import { fileURLToPath } from 'url';
 import mongodb from 'mongodb';
 const { MongoClient } = mongodb;
 
+let yliuxestraciste
 let user = {};
 global.usu0 = [];
 global.usu1 = [];
