@@ -11,3 +11,5 @@
 -idee d ordre droide a rajouter 
 
 -enregistrer les ordres du droide en audio
+
+-creer un bouton lancer la game et faire pause pour le droide et doubleface
