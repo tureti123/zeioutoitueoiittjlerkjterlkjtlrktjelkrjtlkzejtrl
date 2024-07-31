@@ -1,0 +1,227 @@
+"ordres_doubleface"
+	{
+		"win": "Tu dois désormais gagner pendant les {{min}} minutes",
+		"lose": "Tu dois désormais perdre pendant les {{min}} minutes",
+	},
+	"ordres":{
+		"4ad59a05-b765-4e30-83a2-752853692233":
+		{
+			"name": "Tu es un guerrier all in le prochain fight quoi qu'il arrive"
+		},
+		"983ebf9a-0e18-4a79-adca-708189d9c97a":
+		{
+			"name": "Interdiction de reculer"
+		},
+		"f3d39096-28af-4c7c-ad2d-43ac00b4ca0a":
+		{
+			"name": "Tu ne doit pas utiliser ton Q spell pendant 5 minutes"
+		},
+		"91356fe9-ad2f-4447-b949-2f96e626dc27":
+		{
+			"name": "Tu te fais gank utilise ton R maintenant !"
+		},
+		"9eeab4d0-7bd7-48ab-866c-d6be99fe87ac":
+		{
+			"name": "Fait un discours pour gagner mais suicide toi"
+		},
+		"f45903d4-0064-481a-b7ee-1509b0d0ff65":
+		{
+			"name": "Tu ne dois plus last hit pendant trois minutes : ni CS, ni kills, ni camps de jungle, ni objectifs neutres"
+		},
+		"c5fb6123-a0fc-4ba9-aa24-88910ef9d1a6":
+		{
+			"name": "Over react lors du prochain kill/mort"
+		},
+		"1482db06-afb4-4235-b08d-18d7accae0e8":
+		{
+			"name": "A la fin soit ultra heureux et retag"
+		},
+		"7c8c48a7-e5e9-4ed7-9344-7d32c768bf7e":
+		{
+			"name": "INT le prochain fight et accuse la connexion ( ping ta connexion )"
+		},
+		"483b59a3-e0fb-420e-8531-260f636afaf8":
+		{
+			"name": "Faire le nashor instant"
+		},
+		"95d68d46-b237-4549-a40b-9d4bf3df5494":
+		{
+			"name": "Éternue a cause du pollen"
+		},
+		"a4f29411-acc8-43cc-bc66-c9cfd81fdef5":
+		{
+			"name": "Expliquez moi les règles en mode 1Head"
+		},
+		"88e9569c-42f7-4b1b-8e91-5cd9be962eb5":
+		{
+			"name": "Ignore ton TOP pendant les 5 prochaines minutes"
+		},
+		"330bffb4-dae0-418c-bebb-e6d946cb52d3":
+		{
+			"name": "AFK 30secondes + excuse"
+		},
+		"14817984-edcd-4641-9bc2-d3a127085e12":
+		{
+			"name": "Groupe à 5 au mid"
+		},
+		"b0b95b34-f093-4071-a77b-c98c5b65a9eb":
+		{
+			"name": "Tu as un mauvais GPS utilise le chemin le plus long a chaque fois pendant 5 minutes"
+		},
+		"c2338582-eada-42df-bc51-f90f3de559da":
+		{
+			"name": "All-in un allié"
+		},
+		"bb17c2f3-559d-41a6-8137-add0111fdaee":
+		{
+			"name": "Encense celui qui a le plus de mort"
+		},
+		"e6f696eb-66fc-4a2b-ae58-2cebd76de10b":
+		{
+			"name": "Petite pause de 30s pour chiller"
+		},
+		"9934e5fd-8980-494c-a456-f8543b723561":
+		{
+			"name": "Faut faire le drake !"
+		},
+		"add34d77-9a3e-4ad2-8379-b37b68161427":
+		{
+			"name": "Champion pick"
+		},
+		"5c0e864a-13f6-41da-8634-6bc74229af02":
+		{
+			"name": "Motival speatch"
+		},
+		"299de351-91a4-4d8b-b25c-4f8b4ee629af":
+		{
+			"name": "Ignore ton support pendant les 5 prochaines minutes"
+		},
+		"07d0211f-7964-4de2-984f-e6d8b40bc2d5":
+		{
+			"name": "Ignore ton Mid pendant les 5 prochaines minutes"
+		},
+		"b7c5863d-8b50-49b9-8a1d-fe061f96ea75":
+		{
+			"name": "Ignore ton ADC pendant les 5 prochaines minutes"
+		},
+		"cd821fab-4a87-43f2-8c10-1febe0ce11ba":
+		{
+			"name": "Appuie sur Flash maintenant ça donne 1000 gold promis"
+		},
+		"1b439c0-f136-471f-8c5e-82df1a12d29e":
+		{
+			"name": "Tu es un solitaire"
+		},
+		"9ea86102-5df2-4f02-8683-8af0b2bf2e38":
+		{
+			"name": "Fait l'Hérald mais ne le pose pas !"
+		},
+		"635e39ba-79ed-413a-afd3-51d77919d036":
+		{
+			"name": "Swap de lane"
+		},
+		"e51dfa7d-7036-4a15-855d-5da7914db5e3":
+		{
+			"name": "Swap lane JGL/Lane"
+		},
+		"8bb27636-a88b-4d26-a580-c153a9f95d50":
+		{
+			"name": "Oh le pécheur, reste dans la river pendant 1 minute"
+		},
+		"33949877-9742-4095-97ff-be1475d666d1":
+		{
+			"name": "Demande a celui qui a le moins de KP de grouper"
+		},
+		"96bfb12a-4209-471e-a1cf-9c55223b0219":
+		{
+			"name": "Insiste pour avoir le blue"
+		},
+		"5227e70d-41ae-42a0-a2dd-11e6c93106bb":
+		{
+			"name": "Lance un débat de merde"
+		},
+		"82074fb9-b997-4131-818a-9f0367640237":
+		{
+			"name": "Build un item qui n'a rien à voir avec le rôle du champion et dit que cela est une bonne idée"
+		},
+		"3396b223-96c8-4ec7-a80a-0f4775463eff":
+		{
+			"name": "Farm que la JGL"
+		},
+		"86b3cc4c-a8bc-4803-a486-0cd2896ebe1a":
+		{
+			"name": "Chante une chanson pendant 10/15s"
+		},
+		"e91c1943-eea2-4de4-a230-a7a768aa72f3":
+		{
+			"name": "Tes un guerrier ne back pas jusqu'à la prochaine mort."
+		},
+		"e9dd2ec0-1c8e-4482-b1f0-ae5bff7ae68a":
+		{
+			"name": "Tu ne dois plus utiliser ton clavier pour lancer des compétences pendant 3 minutes"
+		},
+		"587857d2-e07a-49b4-8272-b1906b2ebadc":
+		{
+			"name": "Tu dois aller a l'opposer de la map a pied (Top to Bot ou Bot to TOP)"
+		},
+		"4aa9b169-9af9-4efe-b9ac-59e542e56cfa":
+		{
+			"name": "KS le prochain kill ou le blue/red"
+		},
+		"2e670ad4-5547-4dc2-98ce-97026cda8c71":
+		{
+			"name": "Crie lors de la prochaine mort"
+		},
+		"1a6d0f11-c45f-4efa-802e-de8866ac682d":
+		{
+			"name": "AFK à la base et bouge quand on te dit si tu es AFK"
+		},
+		"174ee74c-33a8-489d-8d26-d639d9a535f9":
+		{
+			"name": "Ding Dong, afk 20secondes"
+		},
+		"36c695ca-4ced-4725-964b-0debfd4ece29":
+		{
+			"name": "Tu dois rp le champion que tu joues au prochain teamfight"
+		},
+		"2e2d27af-60d3-4611-9510-7c4d76399594":
+		{
+			"name": "Tu dois donner des fausses informations pendant 2 minutes ( faux SS, faux ping, Et cetera "
+		},
+		"923f00fb-d207-4a22-9197-c0bac7f80abf":
+		{
+			"name": "Flame le joueur le plus nul pendant 2 minutes ( Soit gentil quand même ! )"
+		},
+		"99336d2f-3f3d-4171-ab34-b1a6f28c0ab0":
+		{
+			"name": "Tweark sur la midlane 20 econdes"
+		},
+		"99ec0a83-e195-4f69-8705-949520ee8eee":
+		{
+			"name": "Clac tes sums"
+		},
+		"559822ab-d43b-407a-b555-4210d79fb9dc":
+		{
+			"name": "Tu doit utiliser ton Q spell des qu'il est disponible pendant 2 minutes"
+		},
+		"ed2c7d54-621a-42c5-9619-9f09af4f0963":
+		{
+			"name": "Va proxies la wave !"
+		},
+		"630101e8-cf3a-480c-9551-431303405192":
+		{
+			"name": "AFK à la base 1 minute 30"
+		},
+		"4124e9c0-7840-4d71-8978-985ae02f83d3":
+		{
+			"name": "Prend le tricket blue jusqu'au prochain back"
+		},
+		"ef9c10a4-230f-4ccc-8373-f4ad402d2e1c":
+		{
+			"name": "L'heure de backdoor pose une ward dans la base ennemie !"
+		},
+		"2e670ad4-5547-4dc2-98ce-97026cda8c71":
+		{
+			"name": "Crie lors de la prochaine mort"
+		},
+    }
