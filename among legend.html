@@ -36,7 +36,7 @@
                 const valeur = salam.value
                 document.getElementById('a supprimer').innerHTML = '';
                 socket.emit('pseudo', valeur)
-                socket.emit('chocolat')
+               
             }
         }
     </script>
@@ -76,16 +76,19 @@
         let rog
         let ido = socket.id
         let ta = 1
+        
 
-        async function Tù(h,l){
-            socket.emit('vt',h)
+        async function Tù(h,l,reco){
+        
+            socket.emit('vt',h,reco)
             let verif = await new Promise((resolve) => {
                 socket.on('val2', (value) => {
                     resolve(value);
                 });
             });
-
+        
             if (verif === true){
+                console.log('terrestere')
                 socket.emit('conn',h)
                 await new Promise((resolve) => {
                     socket.on('cringe', (tera, pseudo) => {
@@ -96,27 +99,10 @@
                 });
 
                 ido = socket.id
-
-                if (socket.po === true){
-                    socket.emit('recup')
-                    await new Promise((resolve) => {
-                        socket.on('recap', (p, s, tn) => {
-                            uy = p
-                            supprimer = s
-                            ta = tn
-                            resolve(p, s)
-                        })
-                    })
-
-                    await new Promise((resolve) => {
-                        lameme('dejadansuneequipe', socket.po2, h, l, uy, supprimer, ido, ta)
-                        socket.on('cfait', (tru) => {
-                            resolve(tru)
-                        })
-                    })
-                    socket.emit('qt', `T${h}`, `${uy}`, supprimer2)
-                } else {
-                    socket.emit('t12', h);
+                console.log('tereza')
+                if(socket.po !== true || reco==='reco'){
+                    console.log("jerajoute")
+                    socket.emit('t12', h,reco);
                     rejoin = await new Promise((resolve) => {
                         socket.on('rej', (value, tn) => {
                             ido = socket.id
@@ -127,21 +113,50 @@
                     });
 
                     await new Promise((resolve) => {
+                        console.log(rejoin, h, l, ido, ta)
                         lameme('rajoutep', rejoin, h, l, ido, ta)
                         socket.on('cfait', (tru, v) => {
                             rog = v
                             resolve(tru)
                         })
-                    }).then(() => {
+                    })
+                    .then(() => {
+                        console.log('save')
                         socket.emit('saveteamate', l, rog)
                     })
                 }
+
+                else{
+                    console.log(0)
+                    socket.emit('recup')
+                    await new Promise((resolve) => {
+                        socket.on('recap', (p, s, tn) => {
+                            uy = p
+                            supprimer = s
+                            ta = tn
+                            resolve(p, s)
+                            console.log(uy)
+                            console.log(supprimer)
+                        })
+                    })
+
+                    await new Promise((resolve) => {
+                        lameme('dejadansuneequipe', socket.po2, h, l, uy, supprimer, ido, ta)
+                        socket.on('cfait', (tru) => {
+                            resolve(tru)
+                        })
+                    })
+                    socket.emit('qt', `T${h}`, `${uy}`, supprimer2,ta)
+                } 
+           
+                
             }
         }
 
         async function dejadansuneequipe(pseudo, h, l, uy, supprimer, ido, ta){
             let suppression = document.getElementById(supprimer)
             let malv = document.getElementById(uy)
+            console.log(uy)
 
             if (malv.parentNode.parentNode.id !== `T${h}`){
                 let chgt = malv.parentNode.removeChild(malv)
@@ -152,10 +167,12 @@
                 let element = document.getElementById(`T${h}`)
                 element.appendChild(salamé)
                 salamé.appendChild(chgt)
-                socket.contenu = uy
+               
                 ta++
 
                 if (ido === socket.id){
+                    socket.contenu = salamé.id
+                    console.log(socket.contenu)
                     socket.emit('resolue', h, document.getElementById(`sktt1`).innerHTML, document.getElementById(`sktt0`).innerHTML, ta)
                 }
             }
@@ -167,6 +184,7 @@
 
         async function apparition (){
         }  
+
         function rajoutep(rejoin, h, l, ido, tx){
             console.log(tx)
             const TH = document.getElementById(`T${h}`)
@@ -177,12 +195,14 @@
             let tea = document.createElement('td')
             teamate.appendChild(tea)
             tea.id = `t${l}${tx}`
-            socket.contenu = `teamate${l}${tx}`
+           
 
             let teael = document.getElementById(`t${l}${tx}`)
             teael.innerHTML = rejoin 
 
             if (ido === socket.id){
+                socket.contenu = `teamate${l}${tx}`
+                console.log(socket.contenu)
                 socket.emit('resolue', h, document.getElementById(`sktt1`).innerHTML, document.getElementById(`sktt0`).innerHTML, tx)
             }
         }
@@ -190,12 +210,12 @@
 </body>
 <script id="ini">
     window.addEventListener('beforeunload', async () => {
-        if(socket.connected===false){
+       
         console.log(socket.contenu)
         document.getElementById(socket.contenu).remove()
         socket.emit('disconnecting2', document.getElementById('sktt1').innerHTML, document.getElementById('sktt0').innerHTML);
-        socket.emit('bjr');
-        }
+        io.emit('bjr',socket.connected);
+        
     });
 socket.on('t',async ()=>{
 
@@ -214,44 +234,53 @@ socket.on('t',async ()=>{
             window[f](a1, a2, a3, a4, a5, a6, a7)
         })
 
-        socket.on('T1', (team, teamate) => {
-            Tù(team, teamate)
+        socket.on('T1', () => {
+            console.log('rarararar')
+            Tù(1,'a','reco')
         })
 
         socket.on('T0', (team, teamate) => {
             Tù(team, teamate)
         })
 
-        socket.on(socket.id, () => {})
+        socket.on(socket.id, () => {
+
+        })
 
         socket.on('imposteur', () => {
+            console.log('aaaaaaaaaaaaaaaaaaaaaaa')
+            document.getElementById('role').innerHTML = 'imposteur';
+
             const imageContainer = document.getElementById('imposteur');
-            imageContainer.innerHTML = `<img src="" alt="Image">`;
+            //imageContainer.innerHTML = `<img src="" alt="Image">`;
         })
 
         socket.on('serpentin', () => {
+            console.log('fdsqqqqqqqqqqqqqqqq')
+            document.getElementById('role').innerHTML = 'serpentin'
+           
             const imageContainer = document.getElementById('serpentin');
-            imageContainer.innerHTML = `<img src="" alt="Image">`;
+            //imageContainer.innerHTML = `<img src="" alt="Image">`;
         })
 
         socket.on('doubleface', () => {
             const imageContainer = document.getElementById('imposteur');
-            imageContainer.innerHTML = `<img src="" alt="Image">`;
+            //imageContainer.innerHTML = `<img src="" alt="Image">`;
         })
 
         socket.on('droide', () => {
             const imageContainer = document.getElementById('imposteur');
-            imageContainer.innerHTML = `<img src="" alt="Image">`;
+            //imageContainer.innerHTML = `<img src="" alt="Image">`;
         })
 
         socket.on('superhero', () => {
             const imageContainer = document.getElementById('imposteur');
-            imageContainer.innerHTML = `<img src="" alt="Image">`;
+           // imageContainer.innerHTML = `<img src="" alt="Image">`;
         })
 
         socket.on('romeo', () => {
             const imageContainer = document.getElementById('imposteur');
-            imageContainer.innerHTML = `<img src="" alt="Image">`;
+            //imageContainer.innerHTML = `<img src="" alt="Image">`;
         })
 
         socket.on('sendata', (m) => {
@@ -306,13 +335,91 @@ socket.on('t',async ()=>{
     let i = 3;
     let k = 0;
 
-    async function assignation() {
+    async function assignation() {  
         socket.emit('giverole', true);
     }
 
-    socket.on('message', (g) => {
+    socket.on('message', (g,h) => {
+        console.log(g,h)
         socket.role = g;
         document.getElementById('role').innerHTML = socket.role;
+        creationtab(h)
     });
+</script>
+<table>
+    <thead >
+<tr id="gen">
+    <th></th>
+
+
+</tr>
+
+    </thead>
+    <tbody id="ayaya">
+
+
+    </tbody>
+</table>
+<script id="ryu">
+    //on peut faire avec un defilement mais j ai envie de le faire avec un tableau
+    let identityu=['imposteur','serpentin','superhero','doubleface','roméo','droide']
+
+async function creationtab(h){
+   socket.emit('jt',h)
+  let hequipe= await new Promise((resolve)=>{
+    socket.on('gh',(equipe)=>{
+        resolve(equipe.map(el=>el.pseudo))
+    })  
+   
+})
+for (let head=0;head<2;head++){
+    console.log(hequipe)
+    let ahead=document.createElement('th')
+            ahead.id=`${head}`
+            ahead.innerHTML=hequipe[head]
+          //  let road=documeent.getElementById(`${r}`)
+            document.getElementById('gen').appendChild(ahead)
+}
+ for (let r=0;r<5;r++){
+     let row=document.createElement('tr')
+            row.id=`${r}`
+          //  let road=documeent.getElementById(`${r}`)
+            document.getElementById('ayaya').appendChild(row)
+            let dline= document.createElement('td')
+            row.appendChild(dline)
+            dline.innerHTML=identityu[r]
+        for (let id=0;id<2;id++){
+            let line= document.createElement('td')
+            let checkbox=document.createElement('input')
+            checkbox.id=`${r}${id}` 
+            checkbox.setAttribute("name",`checkbox${id}`)
+            checkbox.setAttribute("type","checkbox")
+            row.appendChild(line)
+            line.appendChild(checkbox)
+        }
+    }
+}
+
+ async function acri(){
+    for (let r;r<5;r++){
+        for (let id;id<4;id++){
+            socket.emit(`${r}${id}`)
+
+        }
+    }
+}
+function selection(c){
+    let oneon=document.getElementsByName(`checkbox${c}`).toArray()
+    let twon=oneon.map(dlc=>dlc.checked)
+    for (let yu in twon){
+        if (twon[yu]===true){
+            document.getElementsById(`checkbox${c}${yu}`)
+
+        }
+    }
+    
+
+}
+
 </script>
 </html>
