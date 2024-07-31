@@ -9,3 +9,5 @@
 -trouver les images pour les roles
 
 -idee d ordre droide a rajouter 
+
+-enregistrer les ordres du droide en audio
