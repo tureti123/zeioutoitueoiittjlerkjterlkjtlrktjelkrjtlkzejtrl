@@ -7,3 +7,5 @@
 -faire le css
 
 -trouver les images pour les roles
+
+-idee d ordre droide a rajouter 
