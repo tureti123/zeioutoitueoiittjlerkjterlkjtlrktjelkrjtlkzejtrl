@@ -394,6 +394,9 @@ for (let head=0;head<2;head++){
             checkbox.id=`${r}${id}` 
             checkbox.setAttribute("name",`checkbox${id}`)
             checkbox.setAttribute("type","checkbox")
+            checkbox.addEventListener('change',()=>{
+                selection(id,r)
+            })
             row.appendChild(line)
             line.appendChild(checkbox)
         }
@@ -408,18 +411,40 @@ for (let head=0;head<2;head++){
         }
     }
 }
-function selection(c){
-    let oneon=document.getElementsByName(`checkbox${c}`).toArray()
-    let twon=oneon.map(dlc=>dlc.checked)
+async function selection(c,r){
+    console.log(c,r)
+    let oneon=document.getElementsByName(`checkbox${c}`)
+    console.log(oneon)
+    let threeon=Array.from(oneon)
+    let twon=threeon.map(dlc=>dlc.checked)
+    console.log(twon)
+    let tu=await f(twon)
+    if(tu===2){
     for (let yu in twon){
+        console.log(yu,r)
+        if (Number(yu)!==Number(r)){
         if (twon[yu]===true){
-            document.getElementsById(`checkbox${c}${yu}`)
+            console.log(yu,c)
+            console.log(document.getElementById(`${yu}${c}`))
+            document.getElementById(`${yu}${c}`).checked=false
 
         }
     }
+    }
+    }
+    }
     
 
-}
 
+function f(twon){
+    let compte=0
+for (let k of twon){
+    if(k==true){
+        compte+=1
+    }
+
+}
+return compte
+}
 </script>
 </html>
