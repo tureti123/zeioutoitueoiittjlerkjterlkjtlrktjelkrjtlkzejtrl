@@ -41,10 +41,10 @@
         }
     </script>
     <div id="container">
-    <button onclick="Tù(1,'a')">rejoindre t1</button>
-    <button onclick="Tù(0,'b')">rejoindre t2</button>
+    <button class="button" onclick="Tù(1,'a')">rejoindre t1</button>
+    <button class="button" onclick="Tù(0,'b')">rejoindre t2</button>
 
-    <table>
+    <table id="tableauteam">
     <tr>
     <td><table id="sktt1">
         <thead>
@@ -334,7 +334,7 @@ socket.on('t',async ()=>{
 <audio controls id="audioPlayer" name="audible"> 
     <source src="" type="video/mp4" id="audio">
 </audio>
-<button onclick="droideaudio()">jk</button>
+<button class="button" onclick="droideaudio()">jk</button>
 <script id="bard">
     let tabaudio = [];
     function droideaudio() {
@@ -350,7 +350,7 @@ socket.on('t',async ()=>{
 <div id="role">
     fdsfdsfsdfsd
 </div>
-<div id="lancerlapartie"><button onclick="lancer()" >lancer la partie</button></div>
+<div id="lancerlapartie"><button class="button" onclick="lancer()" >lancer la partie</button></div>
 
 <script id="reco">
     async function lancer() {
@@ -499,7 +499,7 @@ return compte
 }
 </script>
 <div id="audiote">
-    <button onclick="audiotest()" id="controle">demarer</button>
+    <button class="button" onclick="audiotest()" id="controle">demarer</button>
     
     <input type="range" min="0" max="1" step="0.1" id="volumecontrol">
     <audio  id="audiotest" name="audible"> <source src="Rick Astley - Never Gonna Give You Up (Official Music Video).mp4" type="video/mp4"></audio>
@@ -524,8 +524,8 @@ function audiotest(){
 document.getElementById('audiotest').load()
 
 </script>
-<button onclick="demarelagem()">commencer la partie</button>
-<button onclick="clear()">clear</button>
+<button class="button" onclick="demarelagem()">commencer la partie</button>
+<button class="button" onclick="clear()">clear</button>
 <script>
     function demarelagem(){
     bardaudio()
