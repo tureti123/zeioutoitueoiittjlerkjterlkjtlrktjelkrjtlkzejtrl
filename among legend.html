@@ -40,10 +40,13 @@
             }
         }
     </script>
-    
+    <div id="container">
     <button onclick="Tù(1,'a')">rejoindre t1</button>
     <button onclick="Tù(0,'b')">rejoindre t2</button>
-    <table id="sktt1">
+
+    <table>
+    <tr>
+    <td><table id="sktt1">
         <thead>
             <tr>
                 <th>T1</th>
@@ -52,7 +55,8 @@
         <tbody id="T1">
         </tbody>
     </table>
-
+    </td>
+    <td>
     <table id="sktt0">
         <thead>
             <tr>
@@ -60,10 +64,11 @@
             </tr>
         </thead>
         <tbody id="T0">
-            <td>gdfdgdf</td>
         </tbody>
     </table>
-
+    </td>
+    </tr>
+    </table>
     <script id="rejoindre team 1"> 
         let t = 0
         let rejoin = ''
@@ -530,5 +535,6 @@ function clear(){
     socket.emit('clear')
 }
 </script>
+</div>
 <div id="class"></div>
 </html>
