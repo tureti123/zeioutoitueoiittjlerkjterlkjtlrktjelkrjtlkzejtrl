@@ -36,17 +36,14 @@
                 const valeur = salam.value
                 document.getElementById('a supprimer').innerHTML = '';
                 socket.emit('pseudo', valeur)
-               
+                socket.emit('chocolat')
             }
         }
     </script>
-    <div id="container">
-    <button class="button" onclick="Tù(1,'a')">rejoindre t1</button>
-    <button class="button" onclick="Tù(0,'b')">rejoindre t2</button>
-
-    <table id="tableauteam">
-    <tr>
-    <td><table id="sktt1">
+    
+    <button onclick="Tù(1,'a')">rejoindre t1</button>
+    <button onclick="Tù(0,'b')">rejoindre t2</button>
+    <table id="sktt1">
         <thead>
             <tr>
                 <th>T1</th>
@@ -55,8 +52,7 @@
         <tbody id="T1">
         </tbody>
     </table>
-    </td>
-    <td>
+
     <table id="sktt0">
         <thead>
             <tr>
@@ -64,11 +60,10 @@
             </tr>
         </thead>
         <tbody id="T0">
+            <td>gdfdgdf</td>
         </tbody>
     </table>
-    </td>
-    </tr>
-    </table>
+
     <script id="rejoindre team 1"> 
         let t = 0
         let rejoin = ''
@@ -81,19 +76,16 @@
         let rog
         let ido = socket.id
         let ta = 1
-        
 
-        async function Tù(h,l,reco){
-        
-            socket.emit('vt',h,reco)
+        async function Tù(h,l){
+            socket.emit('vt',h)
             let verif = await new Promise((resolve) => {
                 socket.on('val2', (value) => {
                     resolve(value);
                 });
             });
-        
+
             if (verif === true){
-                console.log('terrestere')
                 socket.emit('conn',h)
                 await new Promise((resolve) => {
                     socket.on('cringe', (tera, pseudo) => {
@@ -104,10 +96,27 @@
                 });
 
                 ido = socket.id
-                console.log('tereza')
-                if(socket.po !== true || reco==='reco'){
-                    console.log("jerajoute")
-                    socket.emit('t12', h,reco);
+
+                if (socket.po === true){
+                    socket.emit('recup')
+                    await new Promise((resolve) => {
+                        socket.on('recap', (p, s, tn) => {
+                            uy = p
+                            supprimer = s
+                            ta = tn
+                            resolve(p, s)
+                        })
+                    })
+
+                    await new Promise((resolve) => {
+                        lameme('dejadansuneequipe', socket.po2, h, l, uy, supprimer, ido, ta)
+                        socket.on('cfait', (tru) => {
+                            resolve(tru)
+                        })
+                    })
+                    socket.emit('qt', `T${h}`, `${uy}`, supprimer2)
+                } else {
+                    socket.emit('t12', h);
                     rejoin = await new Promise((resolve) => {
                         socket.on('rej', (value, tn) => {
                             ido = socket.id
@@ -118,50 +127,21 @@
                     });
 
                     await new Promise((resolve) => {
-                        console.log(rejoin, h, l, ido, ta)
                         lameme('rajoutep', rejoin, h, l, ido, ta)
                         socket.on('cfait', (tru, v) => {
                             rog = v
                             resolve(tru)
                         })
-                    })
-                    .then(() => {
-                        console.log('save')
+                    }).then(() => {
                         socket.emit('saveteamate', l, rog)
                     })
                 }
-
-                else{
-                    console.log(0)
-                    socket.emit('recup')
-                    await new Promise((resolve) => {
-                        socket.on('recap', (p, s, tn) => {
-                            uy = p
-                            supprimer = s
-                            ta = tn
-                            resolve(p, s)
-                            console.log(uy)
-                            console.log(supprimer)
-                        })
-                    })
-
-                    await new Promise((resolve) => {
-                        lameme('dejadansuneequipe', socket.po2, h, l, uy, supprimer, ido, ta)
-                        socket.on('cfait', (tru) => {
-                            resolve(tru)
-                        })
-                    })
-                    socket.emit('qt', `T${h}`, `${uy}`, supprimer2,ta)
-                } 
-           
-                
             }
         }
 
         async function dejadansuneequipe(pseudo, h, l, uy, supprimer, ido, ta){
             let suppression = document.getElementById(supprimer)
             let malv = document.getElementById(uy)
-            console.log(uy)
 
             if (malv.parentNode.parentNode.id !== `T${h}`){
                 let chgt = malv.parentNode.removeChild(malv)
@@ -172,12 +152,10 @@
                 let element = document.getElementById(`T${h}`)
                 element.appendChild(salamé)
                 salamé.appendChild(chgt)
-               
+                socket.contenu = uy
                 ta++
 
                 if (ido === socket.id){
-                    socket.contenu = salamé.id
-                    console.log(socket.contenu)
                     socket.emit('resolue', h, document.getElementById(`sktt1`).innerHTML, document.getElementById(`sktt0`).innerHTML, ta)
                 }
             }
@@ -189,7 +167,6 @@
 
         async function apparition (){
         }  
-
         function rajoutep(rejoin, h, l, ido, tx){
             console.log(tx)
             const TH = document.getElementById(`T${h}`)
@@ -200,14 +177,12 @@
             let tea = document.createElement('td')
             teamate.appendChild(tea)
             tea.id = `t${l}${tx}`
-           
+            socket.contenu = `teamate${l}${tx}`
 
             let teael = document.getElementById(`t${l}${tx}`)
             teael.innerHTML = rejoin 
 
             if (ido === socket.id){
-                socket.contenu = `teamate${l}${tx}`
-                console.log(socket.contenu)
                 socket.emit('resolue', h, document.getElementById(`sktt1`).innerHTML, document.getElementById(`sktt0`).innerHTML, tx)
             }
         }
@@ -215,12 +190,12 @@
 </body>
 <script id="ini">
     window.addEventListener('beforeunload', async () => {
-       
+        if(socket.connected===false){
         console.log(socket.contenu)
         document.getElementById(socket.contenu).remove()
         socket.emit('disconnecting2', document.getElementById('sktt1').innerHTML, document.getElementById('sktt0').innerHTML);
-        io.emit('bjr',socket.connected);
-        
+        socket.emit('bjr');
+        }
     });
 socket.on('t',async ()=>{
 
@@ -239,85 +214,49 @@ socket.on('t',async ()=>{
             window[f](a1, a2, a3, a4, a5, a6, a7)
         })
 
-        socket.on('T1', () => {
-            console.log('rarararar')
-            Tù(1,'a','reco')
+        socket.on('T1', (team, teamate) => {
+            Tù(team, teamate)
         })
 
         socket.on('T0', (team, teamate) => {
             Tù(team, teamate)
         })
 
-        socket.on(socket.id, () => {
-
-        })
+        socket.on(socket.id, () => {})
 
         socket.on('imposteur', () => {
-            console.log('aaaaaaaaaaaaaaaaaaaaaaa')
-            document.getElementById('role').innerHTML = 'imposteur';
-
             const imageContainer = document.getElementById('imposteur');
-            //imageContainer.innerHTML = `<img src="" alt="Image">`;
+            imageContainer.innerHTML = `<img src="" alt="Image">`;
         })
 
         socket.on('serpentin', () => {
-            console.log('fdsqqqqqqqqqqqqqqqq')
-            document.getElementById('role').innerHTML = 'serpentin'
-           
             const imageContainer = document.getElementById('serpentin');
-            //imageContainer.innerHTML = `<img src="" alt="Image">`;
+            imageContainer.innerHTML = `<img src="" alt="Image">`;
         })
 
         socket.on('doubleface', () => {
             const imageContainer = document.getElementById('imposteur');
-            //imageContainer.innerHTML = `<img src="" alt="Image">`;
+            imageContainer.innerHTML = `<img src="" alt="Image">`;
         })
 
         socket.on('droide', () => {
             const imageContainer = document.getElementById('imposteur');
-            //imageContainer.innerHTML = `<img src="" alt="Image">`;
+            imageContainer.innerHTML = `<img src="" alt="Image">`;
         })
 
         socket.on('superhero', () => {
             const imageContainer = document.getElementById('imposteur');
-           // imageContainer.innerHTML = `<img src="" alt="Image">`;
+            imageContainer.innerHTML = `<img src="" alt="Image">`;
         })
 
         socket.on('romeo', () => {
             const imageContainer = document.getElementById('imposteur');
-            //imageContainer.innerHTML = `<img src="" alt="Image">`;
+            imageContainer.innerHTML = `<img src="" alt="Image">`;
         })
 
         socket.on('sendata', (m) => {
             document.getElementById("role").innerHTML = socket.id
         })
-
-        socket.on('avance',(d)=>{
-            document.getElementById('dab').innerHTML=d
-        })
-        socket.on('resultat',(chacal)=>{
-            console.log('malveillance')
-
-            let resultat=document.createElement('table')
-            let thead=document.createElement('thead')
-            let tr0=document.createElement('tr')
-            let poi=document.getElementById('class')
-            poi.appendChild(resultat)
-            resultat.appendChild(thead)
-            thead.appendChild(tr0)
-            tr0.innerHTML='classement'
-            let tbody=document.createElement('tbody')
-            resultat.appendChild(tbody)
-            for(const chac of chacal){
-
-                let choc=document.createElement('tr')
-                choc.innerHTML=chac
-                tbody.appendChild(choc)
-
-            }
-            
-        })
-       
     }
 
     let y = 0
@@ -328,13 +267,13 @@ socket.on('t',async ()=>{
     }
 </script>
 <div id="test3">
-    <tbody></tbody>
+    fsdfsdfsdfsd
 </div>
 
-<audio controls id="audioPlayer" name="audible"> 
+<audio controls id="audioPlayer"> 
     <source src="" type="video/mp4" id="audio">
 </audio>
-<button class="button" onclick="droideaudio()">jk</button>
+<button onclick="droideaudio()">jk</button>
 <script id="bard">
     let tabaudio = [];
     function droideaudio() {
@@ -350,8 +289,7 @@ socket.on('t',async ()=>{
 <div id="role">
     fdsfdsfsdfsd
 </div>
-<div id="lancerlapartie"><button class="button" onclick="lancer()" >lancer la partie</button></div>
-
+<button onclick="lancer()" id="lancerlapartie">lancer la partie</button>
 <script id="reco">
     async function lancer() {
         socket.emit('nb');
@@ -363,178 +301,18 @@ socket.on('t',async ()=>{
         if (rak === true) {
             assignation();
         }
-        document.getElementById('lancerlapartie').innerHTML=""
     }
 
     let i = 3;
     let k = 0;
 
-    async function assignation() {  
+    async function assignation() {
         socket.emit('giverole', true);
     }
 
-    socket.on('message', (g,h) => {
-        console.log(g,h)
+    socket.on('message', (g) => {
         socket.role = g;
         document.getElementById('role').innerHTML = socket.role;
-        creationtab(h)
     });
 </script>
-
-<div id="validation"></div>
-<table id="dab">
-    <thead >
-<tr id="gen">
-    <th></th>
-
-
-</tr>
-
-    </thead>
-    <tbody id="ayaya">
-
-
-    </tbody>
-</table>
-
-<script id="ryu">
-    //on peut faire avec un defilement mais j ai envie de le faire avec un tableau
-    let identityu=['imposteur','serpentin','superhero','doubleface','roméo','droide']
-
-async function creationtab(h){
-  
-    let validation =document.createElement('button')
-    document.getElementById("validation").appendChild(validation)
-    validation.setAttribute("onclick",`acri(${h})`)
-    validation.innerText='valider'
-    
-
-   socket.emit('jt',h)
-  let hequipe= await new Promise((resolve)=>{
-    socket.on('gh',(equipe)=>{
-        resolve(equipe.map(el=>el.pseudo))
-    })  
-   
-})
-for (let head=0;head<2;head++){
-    console.log(hequipe)
-    let ahead=document.createElement('th')
-            ahead.id=`${head}`
-            ahead.innerHTML=hequipe[head]
-        
-            document.getElementById('gen').appendChild(ahead)
-}
- for (let r=0;r<6;r++){
-     let row=document.createElement('tr')
-            row.id=`${r}`
-          
-            document.getElementById('ayaya').appendChild(row)
-            let dline= document.createElement('td')
-            row.appendChild(dline)
-            dline.innerHTML=identityu[r]
-        for (let id=0;id<2;id++){
-            let line= document.createElement('td')
-            let checkbox=document.createElement('input')
-            checkbox.id=`${r}${id}` 
-            checkbox.setAttribute("name",`checkbox${id}`)
-            checkbox.setAttribute("type","checkbox")
-            checkbox.addEventListener('change',()=>{
-                    selection(id,r)
-            })
-            row.appendChild(line)
-            line.appendChild(checkbox)
-        }
-    }
-    socket.emit('savetab',document.getElementById('dab').innerHTML)
-}
-
- async function acri(h){
-    document.getElementById('validation').innerHTML=""
-    for (let p=0;p<2;p++){
-        for (let r=0;r<6;r++){
-            
-            let acro=document.getElementById(`${r}${p}`)
-            if(acro.checked===true){
-                socket.emit('elu',p,r,h)
-            }
-
-        }
-    }
-}
-async function selection(c,r){
-    console.log(c,r)
-    let oneon=document.getElementsByName(`checkbox${c}`)
-    console.log(oneon)
-    let threeon=Array.from(oneon)
-    let twon=threeon.map(dlc=>dlc.checked)
-    console.log(twon)
-    let tu=await f(twon)
-    if(tu===2){
-    for (let yu in twon){
-        console.log(yu,r)
-        if (Number(yu)!==Number(r)){
-        if (twon[yu]===true){
-            console.log(yu,c)
-            console.log(document.getElementById(`${yu}${c}`))
-            document.getElementById(`${yu}${c}`).checked=false
-
-        }
-       
-        
-    }}}
-
-    }
-    
-
-
-function f(twon){
-    let compte=0
-for (let k of twon){
-    if(k==true){
-        compte+=1
-    }
-
-}
-return compte
-}
-</script>
-<div id="audiote">
-    <button class="button" onclick="audiotest()" id="controle">demarer</button>
-    
-    <input type="range" min="0" max="1" step="0.1" id="volumecontrol">
-    <audio  id="audiotest" name="audible"> <source src="Rick Astley - Never Gonna Give You Up (Official Music Video).mp4" type="video/mp4"></audio>
-</div>
-<script>
-    document.getElementById("volumecontrol").addEventListener('input',()=>{
-        document.getElementsByName("audible").volume= document.getElementById("volumecontrol").value
-        
-    })
-function audiotest(){
-    if (document.getElementById('audiotest').paused){
-    document.getElementById('audiotest').play()
-    document.getElementById('controle').innerText="stop"
-    }
-    else{
-        document.getElementById('audiotest').pause()
-        document.getElementById('controle').innerText="continuer"
-    }
-
-}
-
-document.getElementById('audiotest').load()
-
-</script>
-<button class="button" onclick="demarelagem()">commencer la partie</button>
-<button class="button" onclick="clear()">clear</button>
-<script>
-    function demarelagem(){
-    bardaudio()
-}
-function clear(){
-
-    socket.emit('clear')
-}
-</script>
-</div>
-<div id="class"></div>
 </html>
