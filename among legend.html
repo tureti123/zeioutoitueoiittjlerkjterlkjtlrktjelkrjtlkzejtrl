@@ -346,6 +346,8 @@ socket.on('t',async ()=>{
         creationtab(h)
     });
 </script>
+
+<div id="validation"></div>
 <table>
     <thead >
 <tr id="gen">
@@ -360,11 +362,18 @@ socket.on('t',async ()=>{
 
     </tbody>
 </table>
+
 <script id="ryu">
     //on peut faire avec un defilement mais j ai envie de le faire avec un tableau
     let identityu=['imposteur','serpentin','superhero','doubleface','roméo','droide']
 
 async function creationtab(h){
+  
+    let validation =document.createElement('button')
+    document.getElementById("validation").appendChild(validation)
+    validation.setAttribute("onclick",`acri(${h})`)
+    validation.innerText='valider'
+
    socket.emit('jt',h)
   let hequipe= await new Promise((resolve)=>{
     socket.on('gh',(equipe)=>{
@@ -377,13 +386,13 @@ for (let head=0;head<2;head++){
     let ahead=document.createElement('th')
             ahead.id=`${head}`
             ahead.innerHTML=hequipe[head]
-          //  let road=documeent.getElementById(`${r}`)
+        
             document.getElementById('gen').appendChild(ahead)
 }
  for (let r=0;r<5;r++){
      let row=document.createElement('tr')
             row.id=`${r}`
-          //  let road=documeent.getElementById(`${r}`)
+          
             document.getElementById('ayaya').appendChild(row)
             let dline= document.createElement('td')
             row.appendChild(dline)
@@ -395,7 +404,7 @@ for (let head=0;head<2;head++){
             checkbox.setAttribute("name",`checkbox${id}`)
             checkbox.setAttribute("type","checkbox")
             checkbox.addEventListener('change',()=>{
-                selection(id,r)
+                    selection(id,r)
             })
             row.appendChild(line)
             line.appendChild(checkbox)
@@ -403,10 +412,15 @@ for (let head=0;head<2;head++){
     }
 }
 
- async function acri(){
-    for (let r;r<5;r++){
-        for (let id;id<4;id++){
-            socket.emit(`${r}${id}`)
+ async function acri(h){
+    for (let p=0;p<2;p++){
+        for (let r=0;r<5;r++){
+            
+            let acro=document.getElementById(`${r}${p}`)
+            if(acro.checked===true){
+                socket.emit('elu',p,r,h)
+            }
+           
 
         }
     }
@@ -427,11 +441,14 @@ async function selection(c,r){
             console.log(yu,c)
             console.log(document.getElementById(`${yu}${c}`))
             document.getElementById(`${yu}${c}`).checked=false
+            socket.on()
+            
 
         }
-    }
-    }
-    }
+        socket.off('elu')
+        
+    }}}
+
     }
     
 

@@ -16,6 +16,7 @@ let superheros = {};
 let romeo = {};
 let droide = {};
 let doubleface = {};
+let identityup=['imposteur','serpentin','superhero','doubleface','roméo','droide']
 
 global.T1 = []
 global.T0 = []
@@ -57,6 +58,7 @@ async function connectWithMongoClient() {
 
 io.on('connection', (socket) => {
     connectWithMongoClient();
+    socket.point=0
 
     socket.on('disconnect', () => {});
 
@@ -182,6 +184,9 @@ io.on('connection', (socket) => {
 
             for (const userid of idt){
                 console.log(b+'kjmmmmlllklmjjjjjjjjj')
+                
+                infosaveid(userid, 'role', ni[k]);
+                
                 if (k !== 2 && userid !== socket.id) {
                     socket.to(userid).emit('message', ni[k],b);
                 } else {
@@ -190,7 +195,7 @@ io.on('connection', (socket) => {
                 console.log(ni[k])
                 console.log(userid)
                 //global[ni[k]].add(userid);
-                infosaveid(userid, 'role', ni[k]);
+                
                 k++;
             };
         }
@@ -239,6 +244,19 @@ io.on('connection', (socket) => {
     socket.on('jt',async(h)=>{
        console.log(global[`T${h}`])
         socket.emit('gh',global[`T${h}`])
+    })
+    socket.on("elu",async(p,id,h)=>{
+        console.log('kkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkk')
+        console.log(global[`T${h}`])
+         console.log(global[`T${h}`][p])
+        let attribution= await collec.findOne({ id:global[`T${h}`][p].id});
+        console.log(attribution)
+        if (attribution.role===identityup[id]){
+            console.log(socket.point)
+            socket.point+=1
+            infosave(socket.pseudo,'point',socket.point)
+        }
+        
     })
 });
 
