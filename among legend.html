@@ -286,6 +286,33 @@ socket.on('t',async ()=>{
         socket.on('sendata', (m) => {
             document.getElementById("role").innerHTML = socket.id
         })
+
+        socket.on('avance',(d)=>{
+            document.getElementById('dab').innerHTML=d
+        })
+        socket.on('resultat',(chacal)=>{
+            console.log('malveillance')
+
+            let resultat=document.createElement('table')
+            let thead=document.createElement('thead')
+            let tr0=document.createElement('tr')
+            let poi=document.getElementById('class')
+            poi.appendChild(resultat)
+            resultat.appendChild(thead)
+            thead.appendChild(tr0)
+            tr0.innerHTML='classement'
+            let tbody=document.createElement('tbody')
+            resultat.appendChild(tbody)
+            for(const chac of chacal){
+
+                let choc=document.createElement('tr')
+                choc.innerHTML=chac
+                tbody.appendChild(choc)
+
+            }
+            
+        })
+       
     }
 
     let y = 0
@@ -296,10 +323,10 @@ socket.on('t',async ()=>{
     }
 </script>
 <div id="test3">
-    fsdfsdfsdfsd
+    <tbody></tbody>
 </div>
 
-<audio controls id="audioPlayer"> 
+<audio controls id="audioPlayer" name="audible"> 
     <source src="" type="video/mp4" id="audio">
 </audio>
 <button onclick="droideaudio()">jk</button>
@@ -318,7 +345,8 @@ socket.on('t',async ()=>{
 <div id="role">
     fdsfdsfsdfsd
 </div>
-<button onclick="lancer()" id="lancerlapartie">lancer la partie</button>
+<div id="lancerlapartie"><button onclick="lancer()" >lancer la partie</button></div>
+
 <script id="reco">
     async function lancer() {
         socket.emit('nb');
@@ -330,6 +358,7 @@ socket.on('t',async ()=>{
         if (rak === true) {
             assignation();
         }
+        document.getElementById('lancerlapartie').innerHTML=""
     }
 
     let i = 3;
@@ -348,7 +377,7 @@ socket.on('t',async ()=>{
 </script>
 
 <div id="validation"></div>
-<table>
+<table id="dab">
     <thead >
 <tr id="gen">
     <th></th>
@@ -373,6 +402,7 @@ async function creationtab(h){
     document.getElementById("validation").appendChild(validation)
     validation.setAttribute("onclick",`acri(${h})`)
     validation.innerText='valider'
+    
 
    socket.emit('jt',h)
   let hequipe= await new Promise((resolve)=>{
@@ -389,7 +419,7 @@ for (let head=0;head<2;head++){
         
             document.getElementById('gen').appendChild(ahead)
 }
- for (let r=0;r<5;r++){
+ for (let r=0;r<6;r++){
      let row=document.createElement('tr')
             row.id=`${r}`
           
@@ -410,17 +440,18 @@ for (let head=0;head<2;head++){
             line.appendChild(checkbox)
         }
     }
+    socket.emit('savetab',document.getElementById('dab').innerHTML)
 }
 
  async function acri(h){
+    document.getElementById('validation').innerHTML=""
     for (let p=0;p<2;p++){
-        for (let r=0;r<5;r++){
+        for (let r=0;r<6;r++){
             
             let acro=document.getElementById(`${r}${p}`)
             if(acro.checked===true){
                 socket.emit('elu',p,r,h)
             }
-           
 
         }
     }
@@ -441,11 +472,9 @@ async function selection(c,r){
             console.log(yu,c)
             console.log(document.getElementById(`${yu}${c}`))
             document.getElementById(`${yu}${c}`).checked=false
-            socket.on()
-            
 
         }
-        socket.off('elu')
+       
         
     }}}
 
@@ -464,4 +493,42 @@ for (let k of twon){
 return compte
 }
 </script>
+<div id="audiote">
+    <button onclick="audiotest()" id="controle">demarer</button>
+    
+    <input type="range" min="0" max="1" step="0.1" id="volumecontrol">
+    <audio  id="audiotest" name="audible"> <source src="Rick Astley - Never Gonna Give You Up (Official Music Video).mp4" type="video/mp4"></audio>
+</div>
+<script>
+    document.getElementById("volumecontrol").addEventListener('input',()=>{
+        document.getElementsByName("audible").volume= document.getElementById("volumecontrol").value
+        
+    })
+function audiotest(){
+    if (document.getElementById('audiotest').paused){
+    document.getElementById('audiotest').play()
+    document.getElementById('controle').innerText="stop"
+    }
+    else{
+        document.getElementById('audiotest').pause()
+        document.getElementById('controle').innerText="continuer"
+    }
+
+}
+
+document.getElementById('audiotest').load()
+
+</script>
+<button onclick="demarelagem()">commencer la partie</button>
+<button onclick="clear()">clear</button>
+<script>
+    function demarelagem(){
+    bardaudio()
+}
+function clear(){
+
+    socket.emit('clear')
+}
+</script>
+<div id="class"></div>
 </html>

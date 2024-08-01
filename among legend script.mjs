@@ -6,7 +6,7 @@ import { fileURLToPath } from 'url';
 import mongodb from 'mongodb';
 const { MongoClient } = mongodb;
 
-
+let count=0
 let user = {};
 global.usu0 = [];
 global.usu1 = [];
@@ -186,9 +186,11 @@ io.on('connection', (socket) => {
                 console.log(b+'kjmmmmlllklmjjjjjjjjj')
                 
                 infosaveid(userid, 'role', ni[k]);
+                infosave(userid,'point',0)
                 
                 if (k !== 2 && userid !== socket.id) {
                     socket.to(userid).emit('message', ni[k],b);
+                    
                 } else {
                     socket.emit('message', ni[k],b);
                 }
@@ -199,6 +201,7 @@ io.on('connection', (socket) => {
                 k++;
             };
         }
+        
     });
 
     socket.on('sendall', (m) => {
@@ -251,12 +254,34 @@ io.on('connection', (socket) => {
          console.log(global[`T${h}`][p])
         let attribution= await collec.findOne({ id:global[`T${h}`][p].id});
         console.log(attribution)
+        
         if (attribution.role===identityup[id]){
             console.log(socket.point)
             socket.point+=1
             infosave(socket.pseudo,'point',socket.point)
         }
+        count++
+        console.log(count)
+        if(count===2){
+           let chacal =await collec.find({point:{$exists:true}}).toArray()
+           console.log(chacal)
+           let chocol=chacal.map(f=>f.point)
+
+           console.log(chocol)
+
+            io.emit('resultat',chocol)
+        }
         
+    })
+    socket.on('savetab',(t)=>{
+        infosave(socket.pseudo,'disco',t)
+    })
+    socket.on('clear',async()=>{
+        console.log('nettoyage')
+       const execution= await collec.deleteMany({});
+        T1.length=0
+        T0.length=0
+        console.log(T1)
     })
 });
 
@@ -317,6 +342,11 @@ async function reco(socket, n) {
         console.log('fsfsdkjflskjflskqjskq')
         socket.emit(decor.team)
        // global[decor.team].add(n);
+    }
+    if(decor.disco!==undefined){
+
+        console.log(6666666666666)
+        socket.emit('avance',decor.disco)
     }
 }
 }
