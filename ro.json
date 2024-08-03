@@ -46,11 +46,11 @@
 		},
 		"95d68d46-b237-4549-a40b-9d4bf3df5494":
 		{
-			"name": "Éternue a cause du pollen"
+			"name": " le fais pas Éternue a cause du pollen"
 		},
 		"a4f29411-acc8-43cc-bc66-c9cfd81fdef5":
 		{
-			"name": "Expliquez moi les règles en mode 1Head"
+			"name": "le fais pas /demander a expliquer autre chose/Expliquez moi les règles en mode 1Head"
 		},
 		"88e9569c-42f7-4b1b-8e91-5cd9be962eb5":
 		{
@@ -82,11 +82,11 @@
 		},
 		"9934e5fd-8980-494c-a456-f8543b723561":
 		{
-			"name": "Faut faire le drake !"
+			"name": "Faut faire le drake(faire le drake des qu il spawn) !"
 		},
 		"add34d77-9a3e-4ad2-8379-b37b68161427":
 		{
-			"name": "Champion pick"
+			"name": "Champion pick(pick un champion aleatoire)"
 		},
 		"5c0e864a-13f6-41da-8634-6bc74229af02":
 		{
@@ -110,7 +110,7 @@
 		},
 		"1b439c0-f136-471f-8c5e-82df1a12d29e":
 		{
-			"name": "Tu es un solitaire"
+			"name": "Tu es un solitaire(reste seul jusqu au prochaine ordre)"
 		},
 		"9ea86102-5df2-4f02-8683-8af0b2bf2e38":
 		{
@@ -134,7 +134,7 @@
 		},
 		"96bfb12a-4209-471e-a1cf-9c55223b0219":
 		{
-			"name": "Insiste pour avoir le blue"
+			"name": "Insiste pour avoir le blue(des qu il respawn s il est pas la)"
 		},
 		"5227e70d-41ae-42a0-a2dd-11e6c93106bb":
 		{
@@ -170,7 +170,7 @@
 		},
 		"2e670ad4-5547-4dc2-98ce-97026cda8c71":
 		{
-			"name": "Crie lors de la prochaine mort"
+			"name": "Crie lors de la prochaine mort(sauf s il est 3h du mat)"
 		},
 		"1a6d0f11-c45f-4efa-802e-de8866ac682d":
 		{
@@ -178,7 +178,7 @@
 		},
 		"174ee74c-33a8-489d-8d26-d639d9a535f9":
 		{
-			"name": "Ding Dong, afk 20secondes"
+			"name": " le fais pas Ding Dong, afk 20secondes"
 		},
 		"36c695ca-4ced-4725-964b-0debfd4ece29":
 		{
@@ -190,7 +190,7 @@
 		},
 		"923f00fb-d207-4a22-9197-c0bac7f80abf":
 		{
-			"name": "Flame le joueur le plus nul pendant 2 minutes ( Soit gentil quand même ! )"
+			"name": "Flame le joueur le plus nul/qui carry la game/(je pense que c ets plus marrant) pendant 2 minutes ( Soit gentil quand même ! )"
 		},
 		"99336d2f-3f3d-4171-ab34-b1a6f28c0ab0":
 		{
@@ -214,7 +214,7 @@
 		},
 		"4124e9c0-7840-4d71-8978-985ae02f83d3":
 		{
-			"name": "Prend le tricket blue jusqu'au prochain back"
+			"name": "Prend le tricket blue jusqu'au prochain back(c est un peu un ordre de merde)"
 		},
 		"ef9c10a4-230f-4ccc-8373-f4ad402d2e1c":
 		{
