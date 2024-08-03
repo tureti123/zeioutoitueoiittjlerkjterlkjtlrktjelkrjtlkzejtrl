@@ -14,7 +14,7 @@
 	"name": "INT le prochain fight et accuse la connexion ( ping ta connexion )",
 	"name": "Faire le nashor instant",
 	"name": "le fais pas Éternue a cause du pollen",
-	"name": "le fais pas /demander a expliquer autre chose/Expliquez moi les règles en mode 1Head",
+	"name": "le fais pas /demander a expliquer autre chose si c tureti/Expliquez moi les règles en mode 1Head",(autre proposition fzus le con/clown)
 	"name": "Ignore ton TOP pendant les 5 prochaines minutes",
 	"name": "AFK 30secondes + excuse",
 	"name": "Groupe à 5 au mid",
@@ -23,8 +23,8 @@
 	"name": "Encense celui qui a le plus de mort",
 	"name": "Petite pause de 30s pour chiller",
 	"name": "Faut faire le drake(faire le drake des qu il spawn) !",
-	"name": "Champion pick(pick un champion aleatoire)",
-	"name": "Motival speatch",
+	"name": "pick un champion aleatoire",
+	"name": "Motival speatch minimun 30s",
 	"name": "Ignore ton support pendant les 5 prochaines minutes",
 	"name": "Ignore ton Mid pendant les 5 prochaines minutes",
 	"name": "Ignore ton ADC pendant les 5 prochaines minutes",
@@ -32,7 +32,7 @@
 	"name": "Tu es un solitaire(reste seul jusqu au prochaine ordre)",
 	"name": "Fait l'Hérald mais ne le pose pas !",
 	"name": "Swap de lane",
-	"name": "Swap lane JGL/Lane",
+	"name": "Swap jgl si t lane et va lane si t jgl",
 	"name": "Oh le pécheur, reste dans la river pendant 1 minute",
 	"name": "Demande a celui qui a le moins de KP de grouper",
 	"name": "Insiste pour avoir le blue(des qu il respawn s il est pas la)",
@@ -44,7 +44,6 @@
 	"name": "Tu ne dois plus utiliser ton clavier pour lancer des compétences pendant 3 minutes",
 	"name": "Tu dois aller a l'opposer de la map a pied (Top to Bot ou Bot to TOP)",
 	"name": "KS le prochain kill ou le blue/red",
-	"name": "Crie lors de la prochaine mort(sauf s il est 3h du mat)",
 	"name": "AFK à la base et bouge quand on te dit si tu es AFK",
 	"name": "le fais pas Ding Dong, afk 20secondes",
 	"name": "Tu dois rp le champion que tu joues au prochain teamfight",
@@ -57,4 +56,4 @@
 	"name": "AFK à la base 1 minute 30",
 	"name": "Prend le tricket blue jusqu'au prochain back(c est un peu un ordre de merde)",
 	"name": "L'heure de backdoor pose une ward dans la base ennemie !",
-	"name": "Crie lors de la prochaine mort"
+	"name": "Crie lors de la prochaine mort(evite de me faire trop fort s il est 3h du mat)"
