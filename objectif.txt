@@ -9,3 +9,7 @@
 -trouver les images pour les roles
 
 -idee d ordre droide a rajouter 
+faut que je rajoute un timet pour les ordres qui durent plus de 2 minutes
+faut que je rajiute les points s ils ont serpentin 
+faut que les teams n aient pas forcement les memes roles 
+bruit de ding dong pour les ordres 
