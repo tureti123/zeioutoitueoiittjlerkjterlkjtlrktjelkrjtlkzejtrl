@@ -1,7 +1,10 @@
 {
-  "name": "among-legend",
+  "name": "among-legend2",
   "version": "1.0.0",
-  "main": "index.js",
+  "main": "cassecmong.js",
+  "engines":{
+    "node": "14.x"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -9,10 +12,10 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
+  "description": "",
   "dependencies": {
     "express": "^4.19.2",
-    "mongoose": "^8.5.0",
+    "mongodb": "^6.8.0",
     "socket.io": "^4.7.5"
-  },
-  "description": ""
+  }
 }
